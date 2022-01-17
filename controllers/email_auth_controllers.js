@@ -23,7 +23,7 @@ exports.post_login = function (req, res) {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        res.redirect("/secrets");
+        res.redirect("/");
       });
     }
   });
@@ -46,7 +46,7 @@ exports.post_register = function (req, res) {
         });
       } else {
         passport.authenticate("local")(req, res, function () {
-          res.redirect("/secrets");
+          res.redirect("/");
         });
       }
     }
