@@ -5,7 +5,7 @@
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col"></th>
+        <th scope="col">#</th>
         <th scope="col">Product Name</th>
         <th scope="col">Price</th>
         <th scope="col">About</th>
@@ -13,44 +13,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <!-- ------- -->
-      <tr>
-        <th scope="row">3</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-       <!-- -------- -->
+      <!-- rendering all products using forEach loop -->
+      <%products.forEach((product,i) => { %>
+        <tr>
+          <th scope="row"><%= i+1 %> </th>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.description %></td>
+          <td>
+            <button class="btn btn-sm btn-dark">Add to Cart</button>
+          </td>
+        </tr>
+      <% }) %>
     </tbody>
   </table>
 </div>
