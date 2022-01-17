@@ -1,58 +1,52 @@
 <%- include('partials/header') %>
-<h1>Admin</h1>
-<!-- product table -->
-<div class="table-container">
-  <table class="table table-borderless">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">About</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <!-- ------- -->
-      <tr>
-        <th scope="row">3</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>{{name}}</td>
-        <td>{{price}}</td>
-        <td>{{About}}</td>
-        <td>
-          <button class="btn btn-sm btn-dark">Add to Cart</button>
-        </td>
-      </tr>
-       <!-- -------- -->
-    </tbody>
-  </table>
-</div>
+<br>
+<h1 style="text-align: center;">Admin Panel</h1>
+  <!-- product table -->
+  <div class="table-container">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">id</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">About</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- update existing products -->
+        <% products.forEach(product => { %>
+          <tr>
+            <form action="/admin_update" method="post">
+              <th scope="row">2</th>
+              <td><input class="form-control" name="id" type="text" value="<%= product.id %>"></td>
+              <td><input class="form-control" name="name" type="text" value="<%= product.name %>"></td>
+              <td><input class="form-control" name="price" type="number" value=<%= product.price %>></td>
+              <td><input class="form-control" name="description" type="text" value="<%= product.description %>"></td>
+              <td style="width: 150px;">
+                <button class="btn btn-sm btn-dark" type="submit" >Update</button>
+                <button class="btn btn-sm btn-danger" type="submit" formaction="/admin_delete" ><i class="fas fa-trash"></i></button>
+              </td>
+            </form>
+          </tr>
+        <% }) %>
+        
+          <!-- add new product -->
+        <tr>
+          <form action="/admin_add" method="post">
+            <th scope="row">#</th>
+            <td><input class="form-control" name="id" type="text" value="Add new Product" disabled></td>
+            <td><input class="form-control" name="name" type="text" value=""></td>
+            <td><input class="form-control" name="price" type="number" value= 0 ></td>
+            <td><input class="form-control" name="description" type="text" value=""></td>
+            <td>
+              <button class="btn btn-success " type="submit" >Add</button>
+            </td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<%- include('partials/footer') %>
+  <%- include('partials/footer') %>
