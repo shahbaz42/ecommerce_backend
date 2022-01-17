@@ -23,7 +23,11 @@ exports.post_login = function (req, res) {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        res.redirect("/");
+        if(req.body.username == "admin@admin"){
+          res.redirect("/admin");
+        } else{
+          res.redirect("/");
+        }
       });
     }
   });
