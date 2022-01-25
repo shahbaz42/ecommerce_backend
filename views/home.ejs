@@ -21,7 +21,9 @@
           <td><%= product.price %></td>
           <td><%= product.description %></td>
           <td>
-            <button class="btn btn-sm btn-dark">Add to Cart</button>
+            <form action="/cart" method="post">
+              <button class="btn btn-sm btn-dark" name="product_id" value="<%= product.id %>" >Add to Cart</button>
+            </form>
           </td>
         </tr>
       <% }) %>

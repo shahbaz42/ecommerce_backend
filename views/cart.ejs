@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<!-- product table -->
+<div class="table-container">
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- rendering all products using forEach loop -->
+      <%cart.forEach((cart_item,i) => { %>
+        <tr>
+            <form action="/cart_update" method="post">
+                <th scope="row"><%= i+1 %> </th>
+                <td><%= cart_item.item.name %></td>
+                <td><%= cart_item.item.description %></td>
+                <td><%= cart_item.item.price %></td>
+                <td style="width: 50px;"><input class="form-control" name="quantity" type="number" value=<%= cart_item.quantity %>></td>
+                <td style="width: 150px;">
+                  <button class="btn btn-sm btn-dark" name="index" value="<%= i %>" type="submit" formaction="/cart_update" >Update</button>
+                  <button class="btn btn-sm btn-danger" name="index" value="<%= i %>" type="submit" formaction="/cart_remove" ><i class="fas fa-trash"></i></button>
+                </td>
+            </form>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+
+<%- include('partials/footer') %>
